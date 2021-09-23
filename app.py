@@ -1,11 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
-request = requests.get("https://www.johnlewis.com/anyday-john-lewis-partners-inset-office-chair-black/p5132256")
+request = requests.get("https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html")
 content = request.content
 soup = BeautifulSoup(content, "html.parser")
-element = soup.find("paragraph", {""})
-# <p class="price price--large price--large--anyday">£119.00</p>
-
-
-print(request.content)
+element = soup.find("paragraph", {"class": "price_color"})
+print(element.text)
+# <p class="price_color">£51.77</p>
